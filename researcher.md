@@ -132,10 +132,10 @@ These rules apply to every real experiment without exception.
 
 **Result:** each branch holds only keeps — `git log --oneline` is a clean line of progress:
 ```
-abc1234 experiment #7: final optimization
-def5678 experiment #5: batch processing
-ghi9012 experiment #3: cache layer
-mno7890 experiment #0: baseline snapshot
+a1b2c3d4 experiment #7: final optimization
+e5f6a7b8 experiment #5: batch processing
+c9d0e1f2 experiment #3: cache layer
+3a4b5c6d experiment #0: baseline snapshot
 ```
 Gaps in numbering (no #4, #6) are normal — those were discards or experiments on other branches.
 
