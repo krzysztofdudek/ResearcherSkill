@@ -85,9 +85,9 @@ MIT
 <div align="center">
   <img src="yggdrasil.svg" alt="Yggdrasil" width="150" />
   <br/><br/>
-  <a href="https://discord.gg/SZTbgsH8Wm">
-    <img src="https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white" alt="Discord" />
+  <a href="https://github.com/krzysztofdudek/ResearcherSkill/discussions">
+    <img src="https://img.shields.io/badge/Discussions-Join-181717?logo=github&logoColor=white" alt="GitHub Discussions" />
   </a>
   <br/>
-  <sub>Building something similar or have questions? Join the Discord.</sub>
+  <sub>Questions? Open a discussion on GitHub.</sub>
 </div>
