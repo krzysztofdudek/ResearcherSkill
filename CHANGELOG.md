@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-05-03
+
+### Added
+- **Claude Code plugin scaffolding.** New `.claude-plugin/plugin.json` (manifest: name, version, description, keywords) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). The repo is now installable as a Claude Code plugin via `/plugin marketplace add krzysztofdudek/ResearcherSkill` then `/plugin install researcher@researcher-marketplace`. Single-file drop-in still works for Codex, Cursor, and any other agent that reads markdown skills — copy `skills/researcher/SKILL.md` into the agent's skill directory.
+- README "Install" section documenting both paths (plugin install + single-file drop-in for non-Claude-Code agents).
+- CLAUDE.md "Plugin scaffolding" section describing the `.claude-plugin/` layout and the rule that `plugin.json` `version` is bumped in lockstep with the CHANGELOG section header.
+
+### Changed
+- **Canonical skill body relocated** from repo root (`researcher.md`) to `skills/researcher/SKILL.md` — the path Claude Code reads directly when the plugin is installed. The root-level `researcher.md` is removed; users on Codex / Cursor / other agents copy `skills/researcher/SKILL.md` instead. There is now exactly one canonical file.
+- **Skill `description` frontmatter rewritten to be trigger-focused** (compliant with the AutoReview `skill-description` rule): starts with "Use when", third person, lists concrete user phrasings (`make X faster`, `improve [metric]`, `find best config`, `iterate overnight`, `run experiments until it hits N`), names quantitative vs qualitative metric domains, and includes a "Skip for…" exclusion clause. Old description summarized the workflow ("agent interviews the user, sets up a lab, then explores freely"); the new one tells the agent WHEN to invoke. 471 chars (under the 500-char ceiling enforced by the rule).
+- CLAUDE.md `Versioning` workflow updated to include the `.claude-plugin/plugin.json` version bump as an explicit step (was: implicit "in lockstep" mention only in the Plugin scaffolding section).
+
+### Removed
+- Root-level `researcher.md` and the three-clone sync rule that kept it byte-identical with `skills/researcher/SKILL.md` and `~/.claude/skills/researcher/SKILL.md`. The plugin install path makes the canonical-at-`skills/researcher/SKILL.md` model authoritative; clones are no longer maintained.
+
 ## [1.5.0] - 2026-04-06
 
 ### Added
@@ -102,7 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GUIDE.md` — detailed usage guide
 - FAQ
 
-[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.4...v1.5.0
 [1.4.4]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.3...v1.4.4
 [1.4.3]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.2...v1.4.3

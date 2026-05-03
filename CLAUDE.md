@@ -2,11 +2,16 @@
 
 ## Purpose
 
-This repository exists solely so the author can develop and version `researcher.md`. That file is the complete, standalone researcher skill — people copy it into their own setups. Nothing in this repo (CLAUDE.md, CHANGELOG.md, README.md, CI, etc.) may affect the skill's mechanics. All behavior must be self-contained in `researcher.md`.
+This repository exists solely so the author can develop and version the researcher skill. The canonical file is `skills/researcher/SKILL.md` — people install it as a Claude Code plugin (or copy that one file into their agent's skill dir). Nothing in this repo (CLAUDE.md, CHANGELOG.md, README.md, CI, etc.) may affect the skill's mechanics. All behavior must be self-contained in `skills/researcher/SKILL.md`.
 
-## Sync rule
+## Plugin scaffolding
 
-`researcher.md` and `~/.claude/skills/researcher/SKILL.md` are clones. Any change to one MUST be applied to the other in the same operation. Never leave them out of sync.
+This repo is installable as a Claude Code plugin. Layout mirrors the convention used by sibling repos (e.g. AutoReview):
+- `.claude-plugin/plugin.json` — plugin manifest (name, version, description, keywords). `version` here MUST match the latest released version in `CHANGELOG.md` and is bumped together with it.
+- `.claude-plugin/marketplace.json` — single-plugin marketplace listing so the repo can be added via `/plugin install researcher@<this-marketplace>`.
+- `skills/researcher/SKILL.md` — the canonical skill body. Editing this file IS editing the skill.
+
+When bumping version, update `.claude-plugin/plugin.json` `version` in lockstep with the CHANGELOG section header.
 
 ## Versioning
 
@@ -14,7 +19,8 @@ This project uses [Semantic Versioning](https://semver.org/) and maintains a [CH
 
 When the user says "bump version":
 1. Move `[Unreleased]` entries in `CHANGELOG.md` into a new version section with today's date
-2. Update the comparison links at the bottom of `CHANGELOG.md`
-3. Commit and tag with `v{version}`
+2. Update the comparison links at the bottom of `CHANGELOG.md` (add the new `[X.Y.Z]: …compare/vA.B.C...vX.Y.Z` line and point `[Unreleased]` at the new version)
+3. Update `.claude-plugin/plugin.json` `version` to match
+4. Commit and tag with `v{version}`
 
 Tags are created via the CI pipeline automatically — do not create tags manually.

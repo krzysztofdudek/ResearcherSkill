@@ -20,7 +20,7 @@ The agent tries things, measures, keeps what works, reverts what doesn't. You co
 
 ## What happens when you start
 
-You drop `researcher.md` into your agent (Claude Code, Cursor, whatever reads markdown). Then you say something like:
+You install the Claude Code plugin (or drop `skills/researcher/SKILL.md` into your agent's skill directory if you're on Cursor or anything else that reads markdown skills — see the README's Install section). Then you say something like:
 
 > "I want to optimize the p99 latency of this API endpoint."
 
@@ -335,6 +335,6 @@ It works best when:
 
 ## Try it
 
-One file: [`researcher.md`](researcher.md)
+Install the Claude Code plugin (see the [README](README.md#install)) or copy [`skills/researcher/SKILL.md`](skills/researcher/SKILL.md) into your agent's skill directory.
 
-Drop it in. Point your agent at a problem. See what happens.
+Point your agent at a problem. See what happens.

@@ -9,7 +9,32 @@
 [![GitHub Stars](https://img.shields.io/github/stars/krzysztofdudek/ResearcherSkill)](...)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/SZTbgsH8Wm)
 
-Drop `researcher.md` into Claude Code, Codex, or any agent. It will design experiments, test hypotheses, discard what fails, keep what works — 30+ experiments overnight while you sleep.
+Install as a Claude Code plugin, or drop `skills/researcher/SKILL.md` into Codex, Cursor, or any agent that reads markdown skills. The agent designs experiments, tests hypotheses, discards what fails, keeps what works — 30+ experiments overnight while you sleep.
+
+## Install
+
+### Claude Code plugin (recommended)
+
+Two slash commands inside Claude Code — first registers this repo as a marketplace, second installs the plugin from it:
+
+```
+/plugin marketplace add krzysztofdudek/ResearcherSkill
+/plugin install researcher@researcher-marketplace
+```
+
+Restart Claude Code (or run `/plugin reload`) and trigger the skill with `/researcher` or by asking the agent to run a research loop on something.
+
+To upgrade later: `/plugin marketplace update researcher-marketplace` then `/plugin install researcher@researcher-marketplace` again.
+
+### Single-file drop-in (any agent)
+
+The canonical skill body is `skills/researcher/SKILL.md` in this repo (one file, ~300 lines, frontmatter-tagged). Copy it into your agent's skill directory:
+
+- **Claude Code (user-level):** `~/.claude/skills/researcher/SKILL.md`
+- **Claude Code (project-level):** `.claude/skills/researcher/SKILL.md` in your repo
+- **Codex / other agents:** wherever your tool reads skills or instructions from (consult its docs)
+
+Trigger with `/researcher` (Claude Code) or by asking the agent to enter "researcher mode".
 
 ## What it looks like running
 

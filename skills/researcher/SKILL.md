@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: Autonomous experimentation skill — agent interviews the user, sets up a lab, then explores freely (think, test, reflect) until stopped or a target is hit. Works for any domain where you can measure or evaluate a result.
+description: Use when user wants to optimize or tune something measurable through repeated experiments — "make X faster", "improve [metric]", "find best config", "iterate overnight", "run experiments until it hits N". Triggers on quantitative goals (build time, latency, pass rate, accuracy) or qualitative ones scoreable against a rubric (prompt quality, doc parsing). Skip for one-shot bugs with a clear fix or tasks where the user wants direct implementation without exploration.
 ---
 
 # Researcher — Autonomous Experimentation Skill

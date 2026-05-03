@@ -1,0 +1,25 @@
+{
+  "name": "researcher",
+  "version": "1.6.0",
+  "description": "Autonomous experimentation skill — your AI coding agent designs experiments, tests hypotheses, discards failures, keeps wins. Runs overnight while you sleep.",
+  "author": {
+    "name": "Krzysztof Dudek",
+    "url": "https://github.com/krzysztofdudek"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/krzysztofdudek/ResearcherSkill",
+  "repository": "https://github.com/krzysztofdudek/ResearcherSkill.git",
+  "keywords": [
+    "claude-code-plugin",
+    "claude-code",
+    "experimentation",
+    "research",
+    "autonomous-agent",
+    "ai-coding",
+    "coding-agents",
+    "research-loop",
+    "lab-notebook",
+    "agentic-research",
+    "autoresearch"
+  ]
+}
