@@ -103,11 +103,11 @@ MIT
 
 ## See also
 
-**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill)** — when the optimization target comes from a non-technical stakeholder in business or product terms (not a measurable metric yet). A five-phase dialogue protocol captures intent, holds consent gates, and produces a concrete target you can then point researcher at.
+**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill).** For people who don't write code. Captures intent and holds consent gates before destructive operations. Useful when the optimization goal is still fuzzy and needs to be nailed down in the user's words first.
 
-**[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill)** — once you have a plan, this stops the agent from silently filling gaps. Pairs with researcher when an experiment plan needs faithful execution rather than agent-guided improvisation.
+**[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill).** Once there's a plan, stops the agent from silently filling gaps in it. Useful when an experiment plan needs to be executed faithfully, not improvised.
 
-**[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** — architecture rules in Markdown your agent can't ignore. A reviewer verifies every change and feeds violations back into the agent's loop before it moves on. Useful when research outcomes need to land in a codebase under enforced rules.
+**[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil).** Architecture rules and AST checks your agent can't ignore. A reviewer verifies every change before the agent moves on. Useful when what you build during research needs to land in a codebase under enforced rules.
 
 ---
 
