@@ -103,7 +103,7 @@ MIT
 
 ## See also
 
-**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill).** For people who don't write code. Captures intent and holds consent gates before destructive operations. Useful when the optimization goal is still fuzzy and needs to be nailed down in the user's words first.
+**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill).** For people who don't write code but use AI agents anyway. Captures intent and holds consent gates before destructive operations. Useful when the optimization goal is still fuzzy and needs to be nailed down in the user's words first.
 
 **[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill).** Once there's a plan, stops the agent from silently filling gaps in it. Useful when an experiment plan needs to be executed faithfully, not improvised.
 
