@@ -103,7 +103,11 @@ MIT
 
 ## See also
 
-**[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** — the agent experiments on your code. But does it understand what it's working on? Semantic memory for repositories.
+**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill)** — when the optimization target comes from a non-technical stakeholder in business or product terms (not a measurable metric yet). A five-phase dialogue protocol captures intent, holds consent gates, and produces a concrete target you can then point researcher at.
+
+**[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill)** — once you have a plan, this stops the agent from silently filling gaps. Pairs with researcher when an experiment plan needs faithful execution rather than agent-guided improvisation.
+
+**[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** — architecture rules in Markdown your agent can't ignore. A reviewer verifies every change and feeds violations back into the agent's loop before it moves on. Useful when research outcomes need to land in a codebase under enforced rules.
 
 ---
 
