@@ -6,9 +6,9 @@ This repository exists solely so the author can develop and version the research
 
 ## Plugin scaffolding
 
-This repo is installable as a Claude Code plugin. Layout mirrors the convention used by sibling repos (e.g. AutoReview):
+This repo is installable as a Claude Code plugin. Layout:
 - `.claude-plugin/plugin.json` — plugin manifest (name, version, description, keywords). `version` here MUST match the latest released version in `CHANGELOG.md` and is bumped together with it.
-- `.claude-plugin/marketplace.json` — single-plugin marketplace listing so the repo can be added via `/plugin install researcher@<this-marketplace>`.
+- `.claude-plugin/marketplace.json` — single-plugin marketplace listing so the repo can be added via `/plugin install researcher@researcher-marketplace`.
 - `skills/researcher/SKILL.md` — the canonical skill body. Editing this file IS editing the skill.
 
 When bumping version, update `.claude-plugin/plugin.json` `version` in lockstep with the CHANGELOG section header.
