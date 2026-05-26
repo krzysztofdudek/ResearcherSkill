@@ -21,6 +21,6 @@ When the user says "bump version":
 1. Move `[Unreleased]` entries in `CHANGELOG.md` into a new version section with today's date
 2. Update the comparison links at the bottom of `CHANGELOG.md` (add the new `[X.Y.Z]: …compare/vA.B.C...vX.Y.Z` line and point `[Unreleased]` at the new version)
 3. Update `.claude-plugin/plugin.json` `version` to match
-4. Commit and tag with `v{version}`
+4. Commit the bump and push to `main` — that's it.
 
-Tags are created via the CI pipeline automatically — do not create tags manually.
+Do not create or push tags manually. The `.github/workflows/release.yml` workflow runs on every push to `main`, reads the top version from `CHANGELOG.md`, and if `v<version>` does not already exist it creates the tag, pushes it, and publishes a GitHub Release with notes extracted from the matching changelog section.

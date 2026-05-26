@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-05-26
+
+### Changed
+- Phase 0 "Start fresh" archives to `.lab/archives/<slug>/` (using the existing `research/<slug>` branch slug; suffixed with `-<timestamp>` on collision) instead of the sibling `.lab.bak.<timestamp>/`. Keeps archived runs inside the sacred `.lab/` tree so they survive git operations alongside live experiment state.
+
 ## [1.6.0] - 2026-05-03
 
 ### Added
@@ -117,7 +122,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GUIDE.md` — detailed usage guide
 - FAQ
 
-[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.4...v1.5.0
 [1.4.4]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.3...v1.4.4

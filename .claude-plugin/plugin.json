@@ -1,6 +1,6 @@
 {
   "name": "researcher",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Autonomous experimentation skill — your AI coding agent designs experiments, tests hypotheses, discards failures, keeps wins. Runs overnight while you sleep.",
   "author": {
     "name": "Krzysztof Dudek",

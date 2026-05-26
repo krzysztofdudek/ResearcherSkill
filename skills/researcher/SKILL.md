@@ -40,7 +40,7 @@ Check if `.lab/` already exists in the project root.
 2. Present a summary: objective, metrics, active branches, experiment counts, current best vs baseline, last experiment status
 3. Ask: **resume or start fresh?**
    - **Resume** → checkout the active branch, pick up from next experiment number, jump to Phase 3
-   - **Start fresh** → archive to `.lab.bak.<timestamp>/`, proceed to Phase 1
+   - **Start fresh** → archive to `.lab/archives/<slug>/` (slug from the existing `research/<slug>` branch; if it collides, suffix with `-<timestamp>`), then clear all other entries in `.lab/` and proceed to Phase 1
 
 **If it does not exist:** proceed to Phase 1.
 
