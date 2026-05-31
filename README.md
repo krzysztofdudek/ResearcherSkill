@@ -22,7 +22,7 @@ Two slash commands inside Claude Code — first registers this repo as a marketp
 /plugin install researcher@researcher-marketplace
 ```
 
-Restart Claude Code (or run `/plugin reload`) and trigger the skill with `/researcher` or by asking the agent to run a research loop on something.
+Run `/reload-plugins` to activate it (or restart Claude Code), then trigger the skill with `/researcher` or by asking the agent to run a research loop on something.
 
 To upgrade later: `/plugin marketplace update researcher-marketplace` then `/plugin install researcher@researcher-marketplace` again.
 
@@ -101,13 +101,16 @@ You can try. This saves you the work and includes things autoresearch doesn't ha
 
 MIT
 
-## See also
+## The Yggdrasil family
 
-**[Liaison](https://github.com/krzysztofdudek/LiaisonSkill).** For people who don't write code but use AI agents anyway. Captures intent and holds consent gates before destructive operations. Useful when the optimization goal is still fuzzy and needs to be nailed down in the user's words first.
+Four tools, one thesis: **make an AI coding agent prove correctness, stage by stage** — because "done" isn't done. Each is a checkpoint at a different point in the pipeline, where the agent has to show its work before it continues.
 
-**[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill).** Once there's a plan, stops the agent from silently filling gaps in it. Useful when an experiment plan needs to be executed faithfully, not improvised.
-
-**[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil).** Architecture rules and AST checks your agent can't ignore. A reviewer verifies every change before the agent moves on. Useful when what you build during research needs to land in a codebase under enforced rules.
+| Tool | Stage | What it makes the agent prove |
+|---|---|---|
+| **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Reads your request back in plain words and waits for an explicit yes before it acts. |
+| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks instead of guessing. |
+| **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
+| **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. |
 
 ---
 
