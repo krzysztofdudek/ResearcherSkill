@@ -1,0 +1,22 @@
+{
+  "name": "researcher",
+  "displayName": "Researcher",
+  "version": "1.7.0",
+  "description": "Autonomous experimentation skill — your AI coding agent designs experiments, tests hypotheses, discards failures, keeps wins. Runs overnight while you sleep.",
+  "author": {
+    "name": "Krzysztof Dudek",
+    "url": "https://github.com/krzysztofdudek"
+  },
+  "license": "MIT",
+  "keywords": [
+    "researcher",
+    "cursor",
+    "experimentation",
+    "research",
+    "autonomous-agent",
+    "ai-coding",
+    "research-loop",
+    "lab-notebook"
+  ],
+  "logo": "yggdrasil.svg"
+}

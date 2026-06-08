@@ -26,6 +26,39 @@ Run `/reload-plugins` to activate it (or restart Claude Code), then trigger the 
 
 To upgrade later: `/plugin marketplace update researcher-marketplace` then `/plugin install researcher@researcher-marketplace` again.
 
+### GitHub Copilot CLI plugin
+
+The same repo is also a [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) marketplace. Register it, then install the plugin:
+
+```
+copilot plugin marketplace add krzysztofdudek/ResearcherSkill
+copilot plugin install researcher@researcher-marketplace
+```
+
+To upgrade later: `copilot plugin update researcher`. The same skill body powers both Claude Code and Copilot — trigger it the same way.
+
+### Codex CLI plugin
+
+Codex reads the same skill. Register this repo as a marketplace, then install:
+
+```
+codex plugin marketplace add krzysztofdudek/ResearcherSkill
+codex plugin install researcher@researcher-marketplace
+```
+
+To upgrade later: `codex plugin marketplace upgrade researcher-marketplace`. Or drop the single file into `~/.agents/skills/researcher/SKILL.md` (user-level) or `.agents/skills/researcher/SKILL.md` (project-level).
+
+### Cursor plugin
+
+Cursor auto-discovers the skill from the plugin manifest at the repo root. Install it locally:
+
+```
+git clone https://github.com/krzysztofdudek/ResearcherSkill.git
+ln -s "$(pwd)/ResearcherSkill" ~/.cursor/plugins/local/researcher
+```
+
+Then reload Cursor (**Developer: Reload Window**). Or drop the single file into `~/.cursor/skills/researcher/SKILL.md` (user-level) or `.cursor/skills/researcher/SKILL.md` (project-level).
+
 ### Single-file drop-in (any agent)
 
 The canonical skill body is `skills/researcher/SKILL.md` in this repo (one file, ~300 lines, frontmatter-tagged). Copy it into your agent's skill directory:

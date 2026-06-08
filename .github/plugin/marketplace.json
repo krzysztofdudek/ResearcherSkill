@@ -1,0 +1,17 @@
+{
+  "name": "researcher-marketplace",
+  "owner": {
+    "name": "Krzysztof Dudek"
+  },
+  "plugins": [
+    {
+      "name": "researcher",
+      "source": "./",
+      "description": "Autonomous experimentation skill — your AI coding agent designs experiments, tests hypotheses, discards failures, keeps wins.",
+      "version": "1.7.0",
+      "skills": [
+        "./skills/researcher"
+      ]
+    }
+  ]
+}
