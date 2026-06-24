@@ -7,7 +7,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/krzysztofdudek/ResearcherSkill)](https://github.com/krzysztofdudek/ResearcherSkill/releases/latest)
 [![License](https://img.shields.io/github/license/krzysztofdudek/ResearcherSkill)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/krzysztofdudek/ResearcherSkill)](...)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/SZTbgsH8Wm)
+[![GitHub Discussions](https://img.shields.io/badge/Discussions-Join-181717?logo=github&logoColor=white)](https://github.com/krzysztofdudek/ResearcherSkill/discussions)
 
 Install as a Claude Code plugin, or drop `skills/researcher/SKILL.md` into Codex, Cursor, or any agent that reads markdown skills. The agent designs experiments, tests hypotheses, discards what fails, keeps what works — 30+ experiments overnight while you sleep.
 
