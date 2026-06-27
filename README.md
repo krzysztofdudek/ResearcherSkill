@@ -140,7 +140,7 @@ Four tools, one thesis: **make an AI coding agent prove correctness, stage by st
 
 | Tool | Stage | What it makes the agent prove |
 |---|---|---|
-| **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Reads your request back in plain words so you see what it understood before it builds. |
+| **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Keeps the agent talking to you in plain words, not code, so you can follow what it's doing. |
 | **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks instead of guessing. |
 | **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
 | **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. |
