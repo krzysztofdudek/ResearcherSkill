@@ -145,6 +145,8 @@ Four tools, one thesis: **make an AI coding agent prove correctness, stage by st
 | **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
 | **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. |
 
+Two more sit alongside the chain rather than inside it. **[Horde](https://github.com/krzysztofdudek/Horde)** doesn't own a stage — it's what you add when a mission needs more than one agent to move through all four at once, holding every agent it raises to the same standards. **[Grain](https://github.com/krzysztofdudek/Grain)** reads the conventions a codebase actually practices instead of the ones someone declared — the same seam as Yggdrasil from the other side. Paused since 2026-09-02: the engine works, but the question that decides whether it's worth using — does it change what an agent ships — came back not demonstrated.
+
 ---
 
 <div align="center">
