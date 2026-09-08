@@ -1,0 +1,5 @@
+# Normalize line endings to LF in the repository; let git decide text vs binary.
+* text=auto eol=lf
+
+# Tab-separated data: tabs are the format, never expanded or trimmed.
+*.tsv text eol=lf -whitespace

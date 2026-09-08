@@ -136,17 +136,16 @@ MIT
 
 ## The Yggdrasil family
 
-Four tools, one thesis: **make an AI coding agent prove correctness, stage by stage** — because "done" isn't done. Each is a checkpoint at a different point in the pipeline, where the agent has to show its work before it continues.
+Four tools, one thesis: **make an AI coding agent prove correctness, stage by stage.** Because "done" isn't done. Each of the first four is a checkpoint at a different point in the pipeline, where the agent has to show its work before it continues.
 
 | Tool | Stage | What it makes the agent prove |
 |---|---|---|
 | **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Keeps the agent talking to you in plain words, not code, so you can follow what it's doing. |
-| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks instead of guessing. |
+| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks, it doesn't guess. |
 | **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
 | **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. |
 
-Two more sit alongside the chain rather than inside it. **[Horde](https://github.com/krzysztofdudek/Horde)** doesn't own a stage — it's what you add when a mission needs more than one agent to move through all four at once, holding every agent it raises to the same standards. **[Grain](https://github.com/krzysztofdudek/Grain)** reads the conventions a codebase actually practices instead of the ones someone declared — the same seam as Yggdrasil from the other side. Paused since 2026-09-02: the engine works, but the question that decides whether it's worth using — does it change what an agent ships — came back not demonstrated.
-
+Two more sit alongside the chain rather than inside it, and they stack. **[Grain](https://github.com/krzysztofdudek/Grain)** reads a codebase's own code and history and writes the first architecture graph for it, then keeps telling Yggdrasil where practice has drifted from what the graph declares; it needs Yggdrasil and nothing else. **[Horde](https://github.com/krzysztofdudek/Horde)** sits on top of both: it needs Yggdrasil, uses Grain when it is installed, and is what you add when a mission needs more than one agent to move through all four stages at once, holding every agent it raises to the same standards. Each layer works without the ones above it, and none of them knows the ones above exist.
 ---
 
 <div align="center">
