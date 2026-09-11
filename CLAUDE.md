@@ -4,6 +4,8 @@
 
 This repository exists solely so the author can develop and version the researcher skill. The canonical file is `skills/researcher/SKILL.md` — people install it as a Claude Code plugin (or copy that one file into their agent's skill dir). Nothing in this repo (CLAUDE.md, CHANGELOG.md, README.md, CI, etc.) may affect the skill's mechanics. All behavior must be self-contained in `skills/researcher/SKILL.md`.
 
+Researcher is an add-on in the Yggdrasil family: it attaches to the agent, not to the graph, and works alone. It owns the **code → measured result** stage — point it at a metric and it runs experiments, discarding what fails and keeping what works. The family's core is Yggdrasil (the law: the architecture graph and the rails), Grain (surveys the terrain: the first graph, mined from a repository's own code and history) and Horde (the software house on the law: zero standing roles, a worker per ticket and a one-shot architect); adoption runs Grain first, day zero, then Yggdrasil as the long-term core, then Horde once a mission needs more hands than one agent. Ratatoskr, Urd and Researcher are the three add-ons beside them, each with no dependency of its own.
+
 ## Plugin scaffolding
 
 This repo is installable as a Claude Code plugin and as a GitHub Copilot CLI plugin. Layout:

@@ -136,21 +136,21 @@ MIT
 
 ## The Yggdrasil family
 
-Three tools, one core: **Yggdrasil** holds the architecture a repository declares and the rails that keep its code to it; **[Grain](https://github.com/krzysztofdudek/Grain)** plants that graph for a repository that has none, mined from its own code and history with the evidence for every rule; **[Horde](https://github.com/krzysztofdudek/Horde)** works the graph when a mission outgrows one agent, holding every agent it raises to the same rules. Each layer runs without the ones above it, and adoption goes bottom-up: Yggdrasil first, Grain when there is no graph yet, Horde when one agent is no longer enough.
+**Three jobs, one core, in layers.** **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** is the law: the architecture graph and the rails that hold every change to it. **[Grain](https://github.com/krzysztofdudek/Grain)** surveys the terrain: it mines that graph from a repository's own code and history, so there is a rule-backed map before anyone writes a rule by hand. **[Horde](https://github.com/krzysztofdudek/Horde)** is the software house that builds on the law: zero standing roles, a worker per ticket and a one-shot architect who rules the whole plan once, each ticket refined onto the graph and given a tick. Adoption runs Grain first — install it day zero for a soft, draft-only law that never blocks — then Yggdrasil as the core you keep long term, hard law with proof and CI; Horde is the one door for any mission too big for one agent, not a second path that only opens once a lone agent runs out of room. From 6.0.0 the core ships as one version; the add-ons keep their own. In the family, law is raised by whichever agent does the work in its own territory, and only the client — the one person the whole system answers to — lowers or vetoes it. The three repositories' shared machine contracts are registered on [one page](https://krzysztofdudek.github.io/Yggdrasil/family-contracts).
 
 | Core | What it holds |
 |---|---|
-| **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | The graph and the rails. Every change satisfies the rules that govern it, checked before the agent moves on, re-proved in CI without a key. |
-| **[Grain](https://github.com/krzysztofdudek/Grain)** | The first graph, from evidence. Point it at a repository nobody annotated and it writes the components, the dependencies and the rules the code already keeps, each with the count of places that break it today; Yggdrasil accepts it with one command. |
-| **[Horde](https://github.com/krzysztofdudek/Horde)** | The loop past one agent's context. A steward, an owner per node, an architect with veto, workers and verifiers who never verify their own work, all held to the graph; nothing merges without two keys and an approval. |
+| **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | The law. The architecture graph and the rails that hold every change to it, checked before the agent moves on, re-proved in CI without a key. |
+| **[Grain](https://github.com/krzysztofdudek/Grain)** | The terrain survey. Mines a repository's own code and history into a first graph — components, dependencies, and the rules the code already keeps, each with the count of places that break it today; Yggdrasil accepts it with one command. |
+| **[Horde](https://github.com/krzysztofdudek/Horde)** | The software house on the law. Zero standing roles: a worker per ticket in its own worktree, refined onto the graph and given a tick by a nine-item merge checklist; a one-shot architect rules the whole plan once; the client orders the mission and is the only one who can lower or veto a rule. |
 
-Three add-ons attach to the agent rather than to the graph, and each works alone:
+Three add-ons attach to the agent rather than to the graph, and each works alone. Horde doesn't assume any of them is installed — it carries its own minimum discipline in each role's law — but uses them when they are, one sentence per row below.
 
-| Add-on | Stage | What it makes the agent prove |
-|---|---|---|
-| **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Keeps the agent talking to you in plain words, not code, so you can follow what it's doing. |
-| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks, it doesn't guess. |
-| **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. |
+| Add-on | Stage | What it makes the agent prove | In Horde's loop |
+|---|---|---|---|
+| **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Keeps the agent talking to you in plain words, not code, so you can follow what it's doing. | Keeps the client's plain-language registry open at both ends of a mission. |
+| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks, it doesn't guess. | The stop a worker hits before it guesses. |
+| **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. | Runs the retrospective's measurement. |
 
 ---
 
