@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Plugin manifests for three more hosts: `.codex-plugin/plugin.json` (Codex CLI), `.cursor-plugin/plugin.json` (Cursor) and `.github/plugin/marketplace.json` (GitHub Copilot CLI), with install instructions for each in the README. They shipped from the default branch after 1.7.0 while carrying `1.7.0`.
+
 ## [1.7.0] - 2026-05-26
 
 ### Changed
