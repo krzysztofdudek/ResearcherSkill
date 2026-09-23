@@ -16,7 +16,7 @@ This repo is installable as a Claude Code plugin and as a GitHub Copilot CLI plu
 - `.cursor-plugin/plugin.json` — plugin manifest for Cursor (single-plugin-at-root: manifest at the repo root, no Cursor marketplace file; components are auto-discovered, so `skills/researcher/` is picked up automatically). Installed locally via `~/.cursor/plugins/local/` or published to the Cursor Marketplace. Its `version` MUST be kept in lockstep with `plugin.json`.
 - `skills/researcher/SKILL.md` — the canonical skill body. Editing this file IS editing the skill.
 
-When bumping version, update the `version` in all of `.claude-plugin/plugin.json`, `.github/plugin/marketplace.json` (plugin entry), `.codex-plugin/plugin.json`, and `.cursor-plugin/plugin.json` in lockstep with the CHANGELOG section header.
+When bumping version, update the `version` in all of `.claude-plugin/plugin.json`, `.github/plugin/marketplace.json` (plugin entry), `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json`, and the root `plugin.json` (the portable Agent Plugins 1.0 manifest Copilot and Codex read first) in lockstep with the CHANGELOG section header.
 
 ## Versioning
 
@@ -25,7 +25,7 @@ This project uses [Semantic Versioning](https://semver.org/) and maintains a [CH
 When the user says "bump version":
 1. Move `[Unreleased]` entries in `CHANGELOG.md` into a new version section with today's date
 2. Update the comparison links at the bottom of `CHANGELOG.md` (add the new `[X.Y.Z]: …compare/vA.B.C...vX.Y.Z` line and point `[Unreleased]` at the new version)
-3. Update the `version` in `.claude-plugin/plugin.json`, `.github/plugin/marketplace.json` (plugin entry), `.codex-plugin/plugin.json`, and `.cursor-plugin/plugin.json` to match
+3. Update the `version` in `.claude-plugin/plugin.json`, `.github/plugin/marketplace.json` (plugin entry), `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json`, and the root `plugin.json` (the portable Agent Plugins 1.0 manifest Copilot and Codex read first) to match
 4. Commit the bump and push to `main` — that's it.
 
 Do not create or push tags manually. The `.github/workflows/release.yml` workflow runs on every push to `main`, reads the top version from `CHANGELOG.md`, and if `v<version>` does not already exist it creates the tag, pushes it, and publishes a GitHub Release with notes extracted from the matching changelog section.
