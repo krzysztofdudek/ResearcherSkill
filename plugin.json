@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "researcher",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Autonomous experimentation skill — your AI coding agent designs experiments, tests hypotheses, discards failures, keeps wins. Runs overnight while you sleep.",
   "author": {
     "name": "Krzysztof Dudek",

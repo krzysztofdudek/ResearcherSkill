@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-09-25
+
 ### Added
 - A portable Agent Plugins 1.0 manifest, `plugin.json` at the repository root, which Copilot and Codex read before any host-specific manifest. The host manifests stay for Claude Code, Cursor and older Copilot and Codex, with the same name, version and description.
 - Plugin manifests for three more hosts: `.codex-plugin/plugin.json` (Codex CLI), `.cursor-plugin/plugin.json` (Cursor) and `.github/plugin/marketplace.json` (GitHub Copilot CLI), with install instructions for each in the README. They shipped from the default branch after 1.7.0 while carrying `1.7.0`.
@@ -126,7 +128,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GUIDE.md` — detailed usage guide
 - FAQ
 
-[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/krzysztofdudek/ResearcherSkill/compare/v1.4.4...v1.5.0
