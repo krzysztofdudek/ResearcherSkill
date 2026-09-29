@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.8.0] - 2026-09-25
+## [1.8.0] - 2026-09-29
 
 ### Added
 - A portable Agent Plugins 1.0 manifest, `plugin.json` at the repository root, which Copilot and Codex read before any host-specific manifest. The host manifests stay for Claude Code, Cursor and older Copilot and Codex, with the same name, version and description.
