@@ -1,138 +1,118 @@
-<img width="1376" height="768" alt="Gemini_Generated_Image_5z6cxx5z6cxx5z6c" src="https://github.com/user-attachments/assets/02c3c4cd-fe2a-4fcd-b414-29bd84f5a741" />
+<p align="center"><img src="assets/social-card.png" alt="Researcher: turns your coding agent into an experiment loop; you agree on a metric, and the agent tries one change at a time on its own branch, keeps what moves the number and reverts what does not." width="720"></p>
 
 # Researcher Skill
 
 **One file. Your AI coding agent becomes a scientist.**
 
+Researcher turns your coding agent into an experiment loop: you agree on a metric, and the agent tries one change at a time on its own branch, keeps what moves the number and reverts what does not.
+
+Ask an agent to make something faster and it changes things and tells you it is better. You have no baseline and no record of what it tried, so you can't check that.
+
 [![Latest Release](https://img.shields.io/github/v/release/krzysztofdudek/ResearcherSkill)](https://github.com/krzysztofdudek/ResearcherSkill/releases/latest)
 [![License](https://img.shields.io/github/license/krzysztofdudek/ResearcherSkill)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/krzysztofdudek/ResearcherSkill)](...)
+[![GitHub Stars](https://img.shields.io/github/stars/krzysztofdudek/ResearcherSkill)](https://github.com/krzysztofdudek/ResearcherSkill/stargazers)
 [![GitHub Discussions](https://img.shields.io/badge/Discussions-Join-181717?logo=github&logoColor=white)](https://github.com/krzysztofdudek/ResearcherSkill/discussions)
 
-Install as a Claude Code plugin, or drop `skills/researcher/SKILL.md` into Codex, Cursor, or any agent that reads markdown skills. The agent designs experiments, tests hypotheses, discards what fails and keeps what works.
+## What you install
 
-## Install
-
-### Claude Code plugin (recommended)
-
-Two slash commands inside Claude Code — first registers this repo as a marketplace, second installs the plugin from it:
+In Claude Code:
 
 ```
 /plugin marketplace add krzysztofdudek/ResearcherSkill
 /plugin install researcher@researcher-marketplace
 ```
 
-Run `/reload-plugins` to activate it (or restart Claude Code), then trigger the skill with `/researcher` or by asking the agent to run a research loop on something.
+Then run `/reload-plugins` or restart Claude Code. No config, no API key.
 
-To upgrade later: `/plugin marketplace update researcher-marketplace` then `/plugin install researcher@researcher-marketplace` again.
+| Piece | Where it lands | What it does | When it acts |
+|---|---|---|---|
+| The Researcher skill, one Markdown file ([`skills/researcher/SKILL.md`](skills/researcher/SKILL.md)) | your Claude Code plugins | Runs the interview, sets up the lab and drives the loop. | On `/researcher`, or when you ask to make something measurable better. |
+| A branch `research/<slug>`, and more `research/...` branches when it forks | your local git | One commit per experiment; a discarded experiment is removed with `git reset --hard HEAD~1`, its commit id kept in the log. | During a run. |
+| `.lab/` | repository root, untracked | The config, `results.tsv`, the log, the branch registry, the parking lot of ideas, a scratch workspace and, at the end, a summary. | From setup; it survives every git operation and lets the next session resume. |
+| Two lines in `.gitignore` | your `.gitignore` | Ignore `.lab/` and `run.log`. | At setup. |
+| `.lab/bin/` helpers and your tool's ignore file (for example `.claudeignore`) | `.lab/bin/` and the repository root | Keep each run's output short, to save tokens. | Only if you say yes to this in the interview. |
 
-### GitHub Copilot CLI plugin
+- **Never touches:** files outside the scope you agree on in the interview; it asks you when an experiment would need to. The skill has no step that pushes.
+- **Needs:** git, and a way to measure: a command that prints a number, or a rubric you define together.
+- **Costs:** the loop runs until you stop it or it reaches your target, unless you set a number of experiments. Each experiment runs your command, killed after the time budget you set (five minutes by default). With a rubric instead of a number, three evaluator subagents score each experiment.
+- **In the agent's context:** the skill's description always; the body (about 3,300 words) when it runs; the lab files it re-reads before each experiment.
 
-The same repo is also a [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) marketplace. Register it, then install the plugin:
+<details>
+<summary>Other agents: GitHub Copilot CLI, Cursor, a plain skill folder</summary>
+
+GitHub Copilot CLI:
 
 ```
 copilot plugin marketplace add krzysztofdudek/ResearcherSkill
 copilot plugin install researcher@researcher-marketplace
 ```
 
-To upgrade later: `copilot plugin update researcher`. The same skill body powers both Claude Code and Copilot — trigger it the same way.
-
-### Codex CLI plugin
-
-Codex reads the same skill. Register this repo as a marketplace, then install:
-
-```
-codex plugin marketplace add krzysztofdudek/ResearcherSkill
-codex plugin install researcher@researcher-marketplace
-```
-
-To upgrade later: `codex plugin marketplace upgrade researcher-marketplace`. Or drop the single file into `~/.agents/skills/researcher/SKILL.md` (user-level) or `.agents/skills/researcher/SKILL.md` (project-level).
-
-### Cursor plugin
-
-Cursor auto-discovers the skill from the plugin manifest at the repo root. Install it locally:
+Cursor:
 
 ```
 git clone https://github.com/krzysztofdudek/ResearcherSkill.git
 ln -s "$(pwd)/ResearcherSkill" ~/.cursor/plugins/local/researcher
 ```
 
-Then reload Cursor (**Developer: Reload Window**). Or drop the single file into `~/.cursor/skills/researcher/SKILL.md` (user-level) or `.cursor/skills/researcher/SKILL.md` (project-level).
+Then **Developer: Reload Window**.
 
-### Single-file drop-in (any agent)
+A plain skill folder: copy [`skills/researcher/SKILL.md`](skills/researcher/SKILL.md) to `~/.claude/skills/researcher/SKILL.md` (user level) or `.claude/skills/researcher/SKILL.md` (project level), `~/.cursor/skills/researcher/SKILL.md` for Cursor, or wherever your agent reads skills. Trigger it by asking for "researcher mode".
 
-The canonical skill body is `skills/researcher/SKILL.md` in this repo (one file, ~300 lines, frontmatter-tagged). Copy it into your agent's skill directory:
+</details>
 
-- **Claude Code (user-level):** `~/.claude/skills/researcher/SKILL.md`
-- **Claude Code (project-level):** `.claude/skills/researcher/SKILL.md` in your repo
-- **Codex / other agents:** wherever your tool reads skills or instructions from (consult its docs)
+## What changes on the first day
 
-Trigger with `/researcher` (Claude Code) or by asking the agent to enter "researcher mode".
+- Before any experiment, the agent asks what to optimise, how to measure it, what it may change and what is off limits, and reads the setup back for your yes.
+- It records a baseline with no changes first.
+- It commits before every experiment, logs the result, and keeps or resets the commit by the number.
+- After three discards in a row it must write down why it continues; after five it forks to a different approach.
+- When the session ends, the next one finds `.lab/` and asks whether to resume or start fresh.
 
-## What it looks like running
+## Start
 
-> ### Experiment b4 — READ/WRITE phase separation
-> **Branch:** research/graph-protocol-optimization · **Parent:** #b1 · **Type:** real
->
-> **Hypothesis:** Agents read architectural rules but treat them as optional. Separating the instruction into a READ phase ("load constraints first") and a WRITE phase ("now implement") with a guard ("if you haven't done READ, stop") should improve compliance.
-> **Changes:** restructured agent rules into explicit READ/WRITE phases, added structural guard
-> **Result:** 7.04/10 (was 1.82 baseline, 5.91 best) — **new best**
-> **Status:** keep
->
-> **Insight:** Every attempt to add verification checklists regressed. What worked was changing the structure, not adding steps. Agents respond to framing, not policing.
+1. Install with the two commands above, then run `/researcher` and say what you want better, for example "make `npm run build` faster".
 
-- b0: baseline (no special instructions): 1.82/10. keep.
-- b1: reframe rules as "constraints, not suggestions": 5.91. keep.
-- b2: exhaustive checklist: regression. discard.
-- b3: lightweight checkpoint: regression. discard.
-- b4: READ/WRITE separation + structural guard: **7.04**. **keep.**
-- b5: contractual "implement or document exception": regression. discard.
-- b6: JIT re-reading: 5.23, evaluator disagreement. interesting.
-- b7: mandatory pattern-triggered re-reading: 1.4. **regression below baseline.** discard.
+   You see: the interview: the objective, the metric and its command, the scope, the constraints, the run command, the time budget, and when to stop. Then a compact table of the setup to confirm.
 
-*Real experiment from optimizing [Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil) agent rules. The skill works on any codebase.*
+2. Confirm.
 
-**Same loop, different problems:**
-- `npm run build` takes 40s → agent gets it to 18s
-- prompt returns wrong format 30% of the time → agent gets it to 3%
-- API p99 is 200ms → agent finds the bottleneck and cuts it to 80ms
-- document parser misses edge cases → agent improves match rate from 74% to 91%
+   You see: a new `research/<slug>` branch, `.lab/` created, two lines added to `.gitignore`, and experiment 0, the baseline, in `.lab/results.tsv`.
 
-## How it works
+3. Let it work, and look in when you want.
 
-The agent interviews you about what to optimize, sets up a lab on a git branch, and works autonomously. Thinks, tests, reflects. Commits before every experiment, reverts on failure, logs everything.
+   You see: one entry per experiment in `.lab/log.md`, each with its hypothesis, the change, the result against the best so far, and keep or discard.
 
-It detects when it's stuck and changes strategy. Forks branches to explore different approaches. Keeps going until you stop it or it hits a target. Resume where you left off across sessions.
+4. Stop it, or let it reach your target.
 
-Generalizes [autoresearch](https://github.com/karpathy/autoresearch) beyond ML. Works on any problem where you can measure a result — code, configs, prompts, documents.
+   You see: `.lab/summary.md` with the experiments per branch, the best result against the baseline, the changes that mattered most and the ideas left untested. The kept work sits on the `research/` branch for you to merge or not.
 
-All experiment history lives in an untracked `.lab/` directory. Git manages code. `.lab/` manages knowledge.
+The [guide](GUIDE.md) walks through a complete run from start to finish.
 
-**Want the full walkthrough?** Read the [guide](GUIDE.md). It walks through a complete example from start to finish.
+## What it does not do
 
-## FAQ
+- It does not invent a metric for you; if you can't measure the result, it builds a rubric with you, and a rubric is a judgment, not a measurement.
+- It does not keep a change that did not move the number.
+- It does not stop by itself unless you give it a target or a number of experiments.
+- It has no step that merges its `research/` branch into yours; that stays your call.
 
-**How is this different from autoresearch?**
-Autoresearch's core loop is universal, but the repo is wired to `train.py`, `val_bpb`, and GPU training. To use it on something else you'd rewrite the setup. This gives you that loop ready to go for any codebase.
+## Remove it
 
-**When would I use this instead of ML?**
-It's not instead of ML. ML is one possible domain. This works on anything where the agent can try things, measure, and iterate. Code, scripts, documents, configs. Slow builds, flaky tests, API latency, prompt accuracy.
+In Claude Code:
 
-**How does it measure success for non-ML code?**
-Whatever you can measure. Test pass rate, benchmark output, type check errors, build time. You set it up in the discovery phase. The agent asks what to measure and how. If you can run a command and get a number, that's your metric. For cases where there's no command to run, the agent scores against a qualitative rubric you define together.
+```
+claude plugin uninstall researcher@researcher-marketplace
+claude plugin marketplace remove researcher-marketplace
+```
 
-**How does convergence detection work?**
-The agent checks a table of signals after every experiment. If it sees 5+ failures in a row, a metric plateau, or the same area modified too many times, it knows to change approach. Some signals are advisory (consider pivoting), others are hard guardrails (you must pivot). Details in the [guide](GUIDE.md).
+On Copilot CLI, `copilot plugin uninstall researcher@researcher-marketplace`. On Cursor, delete the link in `~/.cursor/plugins/local/researcher`.
 
-**Can it improve itself?**
-Sort of. The skill was optimized using the skill itself. A research document about how LLMs process instructions (attention decay, primacy/recency, instruction budgets) was used as criteria, and the agent ran the loop against its own prompt. Not fully recursive, but the loop was: research → skill → use skill to improve skill.
+Then delete `.lab/` (the whole experiment history), the two lines it added to `.gitignore`, the `.lab/bin/` helpers and tool ignore file if you accepted them, and the `research/` branches you no longer want.
 
-**Can't I just ask Claude to build this from the autoresearch repo?**
-You can try. This saves you the work and includes things autoresearch doesn't have: thought experiments, non-linear branching, convergence detection, qualitative metrics, and session resume.
+## Where it fits
 
-## License
+Researcher is an add-on of the family: it attaches to the agent, depends on no other family tool and keeps its own version. Inside a Horde mission it runs the retrospective's measurement. It generalises the [autoresearch](https://github.com/karpathy/autoresearch) loop beyond machine learning, to anything you can measure.
 
-MIT
+Read more: [The guide](GUIDE.md) · [The skill](skills/researcher/SKILL.md) · [Changelog](CHANGELOG.md) · [Discussions](https://github.com/krzysztofdudek/ResearcherSkill/discussions) · [Report a problem](https://github.com/krzysztofdudek/ResearcherSkill/issues)
 
 ## The Yggdrasil family
 
@@ -161,6 +141,10 @@ Three add-ons attach to the agent rather than to the graph; each works alone, de
 | **[Ratatoskr](https://github.com/krzysztofdudek/RatatoskrSkill)** | request → intent | Keeps the agent talking to you in plain words, not code, so you can follow what it's doing. | Keeps the client's plain-language registry open at both ends of a mission. |
 | **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks, it doesn't guess. | The stop a worker hits before it guesses. |
 | **Researcher** (this one) | code → measured result | Point it at a metric and it runs experiments, hypotheses kept and discarded. | Runs the retrospective's measurement. |
+
+## License
+
+MIT. Made by [Krzysztof Dudek](https://github.com/krzysztofdudek).
 
 ---
 
